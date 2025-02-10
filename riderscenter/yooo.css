@@ -1,0 +1,211 @@
+
+body { 
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    color: #000000;
+    animation: fadeInBody 1.5s ease-in-out;
+}
+
+.contenedor {
+    display: flex;
+    align-items: center; /* Alinea verticalmente el texto e imagen */
+    justify-content: space-between; /* Espaciado entre el texto y la imagen */
+}
+
+
+
+
+header {
+    display: flex;
+    justify-content: center;
+    background-color: #ffffff;
+    padding: 10px 0;
+    border-bottom: 1px solid #dddddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    animation: slideDownHeader 1s ease;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #373737;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #14408b;
+    transition: width 0.3s ease;
+}
+
+nav a:hover {
+    color: #14618b;
+    transform: scale(1.1);
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.active {
+    color: #000000;
+}
+
+#sobre-mi {
+    padding: 50px 20px;
+    background-color: #ebf4fc;
+    animation: fadeInSection 1.5s ease;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+  
+    margin: 0 auto;
+    align-items: center;
+  
+}
+
+.texto {
+    flex: 1 1 60%;
+    animation: slideInFromLeft 1s ease;
+    width: 60%; /* Puedes ajustar el porcentaje según el espacio que quieras para el texto */
+    padding-right: 20px; /* Espacio entre el texto y la imagen */
+}
+
+.texto h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #000000;
+    animation: textGlow 2s infinite alternate;
+    
+}
+
+.texto p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.imagen {
+    flex: 1 1 40%;
+    text-align: center;
+    animation: slideInFromRight 1s ease;
+}
+
+.imagen img {
+    max-width: 60%;
+    height: 90%;
+    border-radius: 40px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imagen img:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.more {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(45deg, #000000, #4b6175);
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.more:hover {
+    background: linear-gradient(45deg, #abaab9, #08222d);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+}
+
+/* Teléfonos (pantallas pequeñas) */
+@media (max-width: 576px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .texto h1 {
+        font-size: 1.8rem;
+    }
+
+    .texto p {
+        font-size: 1rem;
+    }
+
+    .container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .imagen img {
+        max-width: 90%; /* La imagen ocupará más ancho en móviles */
+    }
+
+    .contenedor {
+        flex-direction: column-reverse; /* Cambia el orden para que el texto esté arriba y la imagen abajo */
+        align-items: center; /* Centra los elementos */
+    }
+}
+
+
+/* Tablets  */
+@media (max-width: 768px) {
+    .texto {
+        flex: 1 1 100%;
+        text-align: center;
+    }
+
+    .imagen {
+        flex: 1 1 100%;
+    }
+
+    .texto h1 {
+        font-size: 2rem;
+    }
+
+    nav {
+        justify-content: space-between;
+        gap: 15px;
+    }
+}
+
+/* Ordenadores  */
+@media (max-width: 992px) {
+    .container {
+        max-width: 90%;
+        gap: 15px;
+    }
+
+    .texto h1 {
+        font-size: 2.2rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+}

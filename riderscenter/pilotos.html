@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Athlete Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0A0A3D;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-image 0.3s ease-in-out;
+            background-size: cover;
+            background-position: center;
+            padding-top: 60px;
+            /* Espacio para el header fijo */
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 90%;
+            max-width: 1200px;
+            transition: opacity 0.3s;
+        }
+
+        .card {
+            width: calc(50% - 20px);
+            /* Dos tarjetas por fila en pantallas medianas */
+            max-width: 300px;
+            height: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, background-color 0.3s, color 0.3s, opacity 0.3s;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            color: rgb(255, 255, 255);
+            font-weight: bold;
+            background-blend-mode: multiply;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* Sombreado sutil */
+        }
+
+        .card h1,
+        .card h3,
+        .card p,
+        .card span {
+            position: relative;
+            z-index: 2;
+            transition: color 0.3s;
+        }
+
+        .card::before {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            background-color: rgba(255, 255, 255, 0.092);
+            border-radius: 10px;
+            /* Igual que la tarjeta */
+        }
+
+        .card:hover {
+            z-index: 3;
+            background-color: rgba(255, 255, 255, 0.178);
+            /* Eliminar color de fondo */
+            background-image: none;
+            /* Eliminar la imagen de fondo */
+        }
+
+        /* Diferentes imágenes de fondo para cada tarjeta */
+        .card:nth-child(1) {
+            background-color: rgba(255, 255, 255, 0.434);
+            background-image: url(img/marcos/URIARTE.png);
+        }
+
+        .card:nth-child(2) {
+            background-color: rgba(255, 255, 255, 0.434);
+            background-image: url(img/casey/caseeey.png);
+        }
+
+        .card:nth-child(3) {
+            background-color: rgba(255, 255, 255, 0.434);
+            background-image: url(img/JOENG/PILOTO.png);
+        }
+
+        .card:nth-child(4) {
+            background-color: rgba(255, 255, 255, 0.434);
+            background-image: url(img/ALEX/PILOTO.png);
+        }
+        .card:nth-child(5) {
+            background-color: rgba(255, 255, 255, 0.434);
+            background-image: url(img/CHANON/PILOTOS\ CHANON.png);
+        }
+
+        /* Cambiar el fondo de la página web según la tarjeta seleccionada */
+        body.card-1-bg {
+            background-image: url(img/marcos/moto.png);
+        }
+
+        body.card-2-bg {
+            background-image: url(img/casey/moto\ casey.png);
+        }
+
+        body.card-3-bg {
+            background-image: url(img/JOENG/MOTO.png);
+        }
+
+        body.card-4-bg {
+            background-image: url(img/ALEX/MOTO.png);
+        }
+        body.card-5-bg {
+            background-image: url(img/CHANON/fondo\ chanon.png);
+        }
+
+        /* Efecto hover para cambiar la imagen de cada tarjeta */
+        .card:nth-child(1):hover {
+            background-image: url(img/marcos/image00004.jpeg);
+            /* Imagen al hacer hover */
+        }
+
+        .card:nth-child(2):hover {
+            background-image: url(img/casey/IMG_0593.jpeg);
+        }
+
+        .card:nth-child(3):hover {
+            background-image: url(img/JOENG/joensoo\ triunfo.jpg);
+        }
+
+        .card:nth-child(4):hover {
+            background-image: url(img/ALEX/s1gp-sardinia-6914.jpeg);
+        }
+        .card:nth-child(5):hover {
+            background-image: url(img/CHANON/Captura\ de\ pantalla\ 2025-02-10\ 100407.png);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6e6e6e;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 15PX;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: #cb1111;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #670a0a;
+            transform: scale(1.1);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .active {
+            color: #000000;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            z-index: 1000;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #373737;
+            padding: 10px 15px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+
+        /* Estilos para pantallas más pequeñas */
+        @media (max-width: 768px) {
+           
+
+            .container {
+                flex-direction: column;
+                /* Apilar las tarjetas verticalmente */
+                align-items: center;
+                /* Centrar horizontalmente */
+            }
+
+            .card {
+                width: 80%;
+                /* Ocupar la mayor parte del ancho en pantallas pequeñas */
+                max-width:100%;
+                /* Eliminar el ancho máximo */
+                height:550PX;
+                /* Ajustar la altura automáticamente */
+                margin-bottom: 20px;
+                /* Espacio entre tarjetas */
+            }
+
+           
+
+        
+        }
+
+         /* Menú hamburguesa */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 15px;
+}
+
+/* Ocultar menú por defecto en móviles */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li {
+  display: inline;
+}
+
+/* Ocultar menú en móviles por defecto */
+@media (max-width: 768px) {
+  .menu-toggle {
+      display: block; /* Se muestra el botón de menú */
+  }
+
+  .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background: white;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-links.active {
+      display: flex;
+  }
+
+  .nav-links li {
+      padding: 10px;
+      display: block;
+  }
+}
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0A0A3D;
+  color: white;
+}
+
+/* Sección de Sponsors (Parte superior, fondo negro) */
+.sponsors {
+  background-color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.sponsors img {
+  height: 40px;
+}
+
+/* Contenedor azul con enlaces y logos */
+.footer-main {
+  background-color: #0A0A3D;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  text-align: left;
+}
+
+.footer-links {
+  width: 30%;
+}
+
+.footer-links h4,
+.social-media h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin: 8px 0;
+}
+
+.footer-links ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links ul li a:hover {
+  color: #F1F1F1;
+}
+
+/* Logos a la derecha */
+.footer-logo {
+  width: 30%;
+  text-align: center;
+}
+
+.footer-logo img {
+  height: 50px;
+  margin: 5px;
+}
+
+/* Redes sociales */
+.social-media {
+  width: 30%;
+  text-align: right;
+}
+
+.social-media .icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.social-media .icons a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.social-media .icons a:hover {
+  color: #F1F1F1;
+}
+
+/* Pie de página */
+.footer-bottom {
+  background-color:#0A0A3D;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-main {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+  }
+
+  .footer-links, .footer-logo, .social-media {
+      width: 100%;
+  }
+
+  .social-media .icons {
+      justify-content: center;
+  }
+}
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+           
+            <a href="home.html">Inicio</a>
+
+            <div class="dropdown">
+                <a href="servicios.html" class="dropbtn">Servicios ▼</a>
+                <div class="dropdown-content">
+                    <a href="servicios.html#entrenamientos">Entrenamientos en circuito</a>
+                    <a href="servicios.html#asistencia">Asistencia mecánica</a>
+
+                    <a href="servicios.html#alojamiento">Alojamiento</a>
+                    <a href="servicios.html#fisioterapia">Fisioterapia</a>
+                    <a href="servicios.html#NUTRICIÓN">Nutrición deportiva</a>
+                    <a href="servicios.html#PSICÓLOGO">Psicología deportivo</a>
+                    <a href="servicios.html#diseñadora">Diseño gráfico</a>
+                    <a href="servicios.html#community">Community manager</a>
+                    <a href="servicios.html#asesoramiento juridico">Asesoramiento jurídico</a>
+                </div>
+            </div>
+            <a href="equipo.html">Equipo</a>
+            <a href="pilotos.html" class="active">PILOTOS</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+    
+
+    <div class="container">
+        <div class="card" data-bg="card-1-bg">
+
+
+        </div>
+        <div class="card" data-bg="card-2-bg">
+
+            <h1></h1>
+
+        </div>
+        <div class="card" data-bg="card-3-bg">
+
+        </div>
+        <div class="card" data-bg="card-4-bg">
+
+        </div>
+        <div class="card" data-bg="card-5-bg">
+
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cards = document.querySelectorAll(".card");
+            cards.forEach(card => {
+                card.addEventListener("mouseenter", function () {
+                    // Cambiar el fondo de la página web según la tarjeta
+                    const bgClass = card.getAttribute("data-bg");
+                    document.body.classList.add(bgClass);
+
+                    // Cambiar el estilo de las demás tarjetas
+                    cards.forEach(otherCard => {
+                        if (otherCard !== card) {
+                            otherCard.style.backgroundColor = "none"; // Eliminar color de fondo
+                            otherCard.style.backgroundImage = "none"; // Eliminar imagen
+                        }
+                    });
+                });
+                card.addEventListener("mouseleave", function () {
+                    // Restaurar el fondo original de la página
+                    const bgClass = card.getAttribute("data-bg");
+                    document.body.classList.remove(bgClass);
+
+                    // Restaurar el estilo de todas las tarjetas
+                    cards.forEach(otherCard => {
+                        otherCard.style.backgroundColor = ""; // Restaurar color de fondo original
+                        otherCard.style.backgroundImage = ""; // Restaurar imagen original
+                    });
+                });
+            });
+        });
+        
+  function toggleMenu() {
+      document.querySelector('.nav-links').classList.toggle('active');
+  }
+  
+    </script>
+</body>
+
+</html>
+
+
+
+
+
+
+

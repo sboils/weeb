@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>360 riderscenter</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #fdfbfb, #ebedee);
+            color: #333;
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInAnimation 2s ease-in forwards;
+        }
+
+        .logo {
+            width: 80%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes fadeInAnimation {
+            from {
+                opacity: 0;
+                transform: translateY(-40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(-20);
+            }
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 20px;
+            background: #ffffff;
+            padding: 10px 0;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6e6e6e;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: #cb1111;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #670a0a;
+            transform: scale(1.1);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .active {
+            color: #000000;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            z-index: 1000;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #373737;
+            padding: 10px 15px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .banner {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            color: white;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        .banner video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 0;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+            opacity: 50%;
+        }
+
+        .banner h1 {
+            font-size: 3rem;
+            animation: fadeIn 2s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .banner p {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            animation: slideUp 2s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+            justify-content: center;
+            /* Agregado para centrar botones */
+            width: auto;
+            /* Agregado para ajustar al contenido */
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            background: linear-gradient(45deg, #0A0A3D, #182c9a);
+            transition: transform 0.3s, box-shadow 0.3s;
+            flex-basis: auto;
+            position: relative;
+            z-index: 2;
+            /* Agregado para ocupar espacio */
+            margin-bottom: 10px;
+            /* Agregado para espaciado en móvil */
+        }
+
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+      
+
+        .cookie-consent {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: rgba(0, 5, 63, 0.8);
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .cookie-consent p {
+            margin-bottom: 10px;
+        }
+
+        .cookie-policy {
+            color: #fff;
+            margin-left: 10px;
+        }
+
+        /* Animaciones */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Menú hamburguesa */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            cursor: pointer;
+            position: absolute;
+            right: 20px;
+            top: 15px;
+        }
+
+        /* Ocultar menú por defecto en móviles */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links li {
+            display: inline;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding-top: 50px;
+                /* Ajuste para el header fijo */
+            }
+
+            .menu-toggle {
+                display: block;
+                /* Se muestra el botón de menú */
+                color: #000000;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 60px;
+                right: 0;
+                background: white;
+                width: 100%;
+                text-align: center;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                padding: 10px;
+                display: block;
+            }
+
+            /* Modificaciones para movil */
+            .button-container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .btn {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+
+            /* Banner adjustments for mobile */
+
+        }
+        
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0A0A3D;
+  color: white;
+}
+
+/* Sección de Sponsors (Parte superior, fondo negro) */
+.sponsors {
+  background-color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.sponsors img {
+  height: 40px;
+}
+
+/* Contenedor azul con enlaces y logos */
+.footer-main {
+  background-color: #0A0A3D;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  text-align: left;
+}
+
+.footer-links {
+  width: 30%;
+}
+
+.footer-links h4,
+.social-media h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin: 8px 0;
+}
+
+.footer-links ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links ul li a:hover {
+  color: #F1F1F1;
+}
+
+/* Logos a la derecha */
+.footer-logo {
+  width: 30%;
+  text-align: center;
+}
+
+.footer-logo img {
+  height: 50px;
+  margin: 5px;
+}
+
+/* Redes sociales */
+.social-media {
+  width: 30%;
+  text-align: right;
+}
+
+.social-media .icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.social-media .icons a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.social-media .icons a:hover {
+  color: #F1F1F1;
+}
+
+/* Pie de página */
+.footer-bottom {
+  background-color:#0A0A3D;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-main {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+  }
+
+  .footer-links, .footer-logo, .social-media {
+      width: 100%;
+  }
+
+  .social-media .icons {
+      justify-content: center;
+  }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <div class="menu-toggle" onclick="toggleMenu()">
+            ☰
+            </div>
+            <ul class="nav-links">
+                <li><a href="home.html" class="active">INICIO</a></li>
+                <li class="dropdown">
+                    <a href="servicios.html" class="dropbtn">Servicios ▼</a>
+                    <ul class="dropdown-content">
+                        <li><a href="servicios.html#entrenamientos">Entrenamientos en circuito</a></li>
+                        <li><a href="servicios.html#asistencia">Asistencia mecánica</a></li>
+                        <li><a href="servicios.html#alojamiento">Alojamiento</a></li>
+                        <li><a href="servicios.html#fisioterapia">Fisioterapia</a></li>
+                        <li><a href="servicios.html#nutricion">Nutrición deportiva</a></li>
+                        <li><a href="servicios.html#psicologo">Psicología deportiva</a></li>
+                        <li><a href="servicios.html#diseño">Diseño gráfico</a></li>
+                        <li><a href="servicios.html#community">Community manager</a></li>
+                        <li><a href="servicios.html#juridico">Asesoramiento jurídico</a></li>
+                    </ul>
+                </li>
+                <li><a href="equipo.html">Equipo</a></li>
+                <li><a href="pilotos.html">Pilotos</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="banner">
+        <video autoplay loop muted playsinline>
+            <source src="imgs/CO67 Cheste.mp4" type="video/mp4">
+        </video>
+        <img src="logos riders center/firma/RIDERS CENTER360 fima.png" alt="360 Riders Center" class="fade-in logo">
+
+        <div class="button-container">
+            <a href="servicios.html#entrenamientos" class="btn learn-more">Entrenamientos en circuito</a>
+            <a href="servicios.html#asistencia" class="btn learn-more">Asistencia mecánica</a>
+            <a href="servicios.html#alojamiento" class="btn learn-more">Alojamiento</a>
+        </div>
+
+    </main>
+    <footer>
+       
+        <div id="cookie-consent" class="cookie-consent">
+            <p>Este sitio web utiliza cookies para mejorar su experiencia. Al continuar navegando, acepta nuestro uso de
+                cookies.</p>
+            <button id="accept-cookies" class="btn">Aceptar</button>
+            <a href="#" class="cookie-policy">Política de cookies</a>
+        </div>
+
+        
+            <footer>
+                <!-- Sección de Sponsors -->
+                <div class="sponsors">
+                    <img src="img/LOGOS/RIDERS CENTER360 fima BLANCO.png" alt="sponsor">
+                    <img src="img/LOGOS/RIDERS CENTER360 fima BLANCO.png" alt="sponsor">
+                    <img src="img/LOGOS/RIDERS CENTER360 fima BLANCO.png" alt="sponsor">
+                    <img src="img/LOGOS/RIDERS CENTER360 fima BLANCO.png" alt="sponsor">
+                    <img src="img/LOGOS/RIDERS CENTER360 fima BLANCO.png" alt="sponsor">
+                </div>
+        
+                <!-- Sección azul con información -->
+                <div class="footer-main">
+                    <div class="footer-links">
+                        <h4>INFORMACIÓN</h4>
+                        <ul>
+                            <li><a href="contacto.html">Contacto</a></li>
+                            <li><a href="#">Política de privacidad</a></li>
+                            <li><a href="#">Política de cookies</a></li>
+                            <li><a href="#">Términos y condiciones</a></li>
+                        </ul>
+                    </div>
+        
+                    <div class="footer-logo">
+                        <img src="img/LOGOS/RIDERS CENTER360 fima BLANCO.png" alt="riders">
+                        <img src="img/LOGOS/Captura de pantalla 2025-02-10 160940.png" alt="abogado">
+                        <img src="img/LOGOS/SBOILS.png" alt="sboils">
+                        <img src="img/LOGOS/PSICO.png" alt="psicologo">
+                       
+                    </div>
+        
+                    <div class="social-media">
+                     
+                        <div class="icons">
+                          
+                            <a href="https://www.instagram.com/360riderscenter/"><i class="fab fa-instagram"></i></a>
+                            <i class="fas fa-phone icon"></i> 
+                            <a href="tel:+34686731546"></a>
+                            <i class="fas fa-envelope icon"></i> 
+                            <a href="mailto:360riderscenter@gmail.com"></a>
+                          
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="footer-bottom">
+                    <p>&copy; 2025 360º Riders Center. Todos los derechos reservados.</p>
+                </div>
+            </footer>
+        
+       
+        
+
+
+
+
+
+
+
+
+    </footer>
+
+    <script>
+        document.getElementById('accept-cookies').addEventListener('click', function () {
+            document.getElementById('cookie-consent').style.display = 'none';
+        });
+
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
+    </script>
+
+</body>
+
+</html>

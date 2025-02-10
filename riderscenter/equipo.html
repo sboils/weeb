@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Information</title>
+    <style>
+        body {
+            margin: 90;
+            padding: 0;
+           
+            font-family: Arial, Helvetica, sans-serif;
+            text-align: center;
+        }
+
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-background video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 4, 45, 0.859);
+            z-index: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 40px;
+        }
+
+        .location {
+            text-align: left;
+            padding: 20px;
+            width: 250px;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: rgb(255, 255, 255);
+        }
+
+        p {
+            font-size: 22px;
+            margin: 5px 0;
+            color: rgb(255, 255, 255);
+        }
+
+        a {
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            font-size: 12px;
+            margin: 1px 0;
+        }
+
+
+        p:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6e6e6e;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 15PX;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: #cb1111;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #670a0a;
+            transform: scale(1.1);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .active {
+            color: #000000;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            z-index: 1000;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #373737;
+            padding: 10px 15px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        @media (max-width: 768px)  @media (max-width: 768px) {
+        body {
+            margin: 0; /* Elimina márgenes para mejor uso en móviles */
+        }
+
+        .navbar {
+            flex-direction: column; /* Apila los elementos de navegación */
+            align-items: center; /* Centra los elementos */
+        }
+
+        nav {
+            flex-direction: column; /* Apila los enlaces */
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 14px; /* Reduce el tamaño de la fuente */
+            padding: 5px; /* Reduce el espacio alrededor de los enlaces */
+        }
+
+        .dropdown-content {
+            position: static; /* Evita el posicionamiento absoluto */
+            box-shadow: none;
+            border-radius: 0;
+            width: 100%; /* Ocupa el ancho completo */
+            padding: 0;
+        }
+
+        .dropdown-content a {
+            padding: 8px 15px;
+            border-bottom: 1px solid #eee; /* Agrega un separador */
+        }
+
+        .video-background {
+            position: fixed; /* Posiciona el video fixed para cubrir la pantalla */
+            top: 0;
+            left: 0;
+            width: 100%; /* Ancho completo */
+            height: 100%; /* Altura completa */
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-background video {
+            width: 100%; /* Ancho completo */
+            height: auto; /* Altura automática para mantener la relación de aspecto */
+            min-height: 100%; /* Mínima altura del 100% para cubrir todo el fondo */
+            object-fit: cover; /* Cubre el área, recortando si es necesario */
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 4, 45, 0.859);
+            z-index: 0;
+        }
+
+        .container {
+            flex-direction: column; /* Apila los elementos */
+            align-items: center; /* Centra los elementos */
+            padding: 20px;
+        }
+
+        .location {
+            text-align: center; /* Centra el texto */
+            width: 90%; /* Ancho más grande */
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgb(255, 255, 255); /* Separación clara */
+        }
+
+        .location:last-child {
+            border-bottom: none; /* Quita la línea del último elemento */
+        }
+
+        h2 {
+            font-size: 20px; /* Tamaño de fuente ajustado */
+        }
+
+        p {
+            font-size: 16px; /* Tamaño de fuente ajustado */
+        }
+
+        a {
+            font-size: 14px; /* Tamaño de fuente ajustado */
+        }
+
+        summary {
+            font-size: 14px; /* Tamaño de fuente ajustado */
+        }
+
+        h4 {
+            font-size: 16px; /* Tamaño de fuente ajustado */
+        }
+    }
+
+
+
+        summary {
+            color: rgb(255, 255, 255);
+            padding: 8px 12px;
+
+            cursor: pointer;
+            display: inline-block;
+            transition: background 0.3s ease;
+        }
+
+        /* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0A0A3D;
+  color: white;
+}
+
+/* Sección de Sponsors (Parte superior, fondo negro) */
+.sponsors {
+  background-color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.sponsors img {
+  height: 40px;
+}
+
+/* Contenedor azul con enlaces y logos */
+.footer-main {
+  background-color: #0A0A3D;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  text-align: left;
+}
+
+.footer-links {
+  width: 30%;
+}
+
+.footer-links h4,
+.social-media h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin: 8px 0;
+}
+
+.footer-links ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links ul li a:hover {
+  color: #F1F1F1;
+}
+
+/* Logos a la derecha */
+.footer-logo {
+  width: 30%;
+  text-align: center;
+}
+
+.footer-logo img {
+  height: 50px;
+  margin: 5px;
+}
+
+/* Redes sociales */
+.social-media {
+  width: 30%;
+  text-align: right;
+}
+
+.social-media .icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.social-media .icons a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.social-media .icons a:hover {
+  color: #F1F1F1;
+}
+
+/* Pie de página */
+.footer-bottom {
+  background-color:#0A0A3D;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-main {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+  }
+
+  .footer-links, .footer-logo, .social-media {
+      width: 100%;
+  }
+
+  .social-media .icons {
+      justify-content: center;
+  }
+}
+    </style>
+</head>
+   
+    <header>
+        <nav class="navbar">
+            <a href="home.html">Inicio</a>
+    
+            <div class="dropdown">
+                <a href="servicios.html" class="dropbtn">Servicios ▼</a>
+                <div class="dropdown-content">
+                    <a href="servicios.html#entrenamientos">Entrenamientos en circuito</a>
+                    <a href="servicios.html#asistencia">Asistencia mecánica</a>
+    
+                    <a href="servicios.html#alojamiento">Alojamiento</a>
+                    <a href="servicios.html#fisioterapia">Fisioterapia</a>
+                    <a href="servicios.html#NUTRICIÓN">Nutrición deportiva</a>
+                    <a href="servicios.html#PSICÓLOGO">Psicología deportivo</a>
+                    <a href="servicios.html#diseñadora">Diseño gráfico</a>
+                    <a href="servicios.html#community">Community manager</a>
+                    <a href="servicios.html#asesoramiento juridico">Asesoramiento jurídico</a>
+                </div>
+            </div>
+            <a href="equipo.html"class="active">EQUIPO</a>
+            <a href="pilotos.html"> Pilotos</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+    
+    <body>
+    
+        <div class="container">
+           
+                <div class="location">
+                <h2>Carlos Pérez</h2>
+                <a>______________________________</a>
+                <p>MÉCANICO<br>ENTRENADOR<br>NUTRICIONISTA</p>
+                <a>______________________________</a>
+                <p><a href="tel:+34686731546">+34 686 73 15 46</a> <br>
+                    <a href="mailto:dacorsa.competizione@gmail.com">dacorsa.competizione@gmail.com</a><br>
+                    <a href="https://www.instagram.com/dacorsa.competizione/" class="more">@dacorsa.competizione</a>
+                </p>
+    
+                <details>
+                    <summary>
+                        <h4>Saber más ></h4>
+                    </summary>
+                    <a>Soy Carlos Pérez, apasionado del mundo del motociclismo y el alto rendimiento. Como
+                        mecánico de carreras especializado en motos, entrenador personal para riders y
+                        nutricionista, mi misión es optimizar tanto el rendimiento de las motos como el de los
+                        pilotos.
+                        Mi objetivo es llevar a cada piloto al siguiente nivel, combinando mecánica, preparación
+                        física y nutrición en un enfoque integral. Si buscas optimizar tu rendimiento, aquí
+                        encontrarás la experiencia y el conocimiento necesarios.
+                        <br>
+                        ¡Nos vemos en la pista!
+                    </a>
+                </details>
+            </div>
+            <div class="location">
+                <h2>Enrique Matres</h2>
+                <a>______________________________</a>
+                <p>FISIOTERAPEUTA</p>
+                <p><a href="tel:+34605311464">+34 605 31 14 64</a><br>
+                    <a>______________________________</a>
+                    <a href="mailto:egarciamatres@hotmail.com">egarciamatres@hotmail.com</a><br>
+                    <a href="https://www.instagram.com/360riderscenter/" class="more">@fisioterapeuta</a>
+                </p>
+                <details>
+                    <summary>
+                        <h4>Saber más ></h4>
+                    </summary>
+                    <a>Soy Enrique Matres, fisioterapeuta especializado en alto rendimiento. Mi pasión es
+                        ayudar a deportistas de élite a alcanzar su máximo potencial físico a través de un enfoque
+                        integral y personalizado, no solo para la rehabilitación, sino también para la prevención de
+                        lesiones y la optimización del rendimiento.
+                        Si eres un deportista de alto rendimiento y buscas optimizar tu físico para alcanzar tus
+                        metas, estaré encantado de acompañarte en este camino hacia el éxito.
+                        <br>
+                        ¡Nos vemos en tu preparación!
+                    </a>
+                </details>
+            </div>
+            <div class="location">
+                <h2>Javier Calduch</h2>
+                <a>______________________________</a>
+                <p>PSICÓLOGO</p>
+                <a>______________________________</a>
+                <p><a href="tel:+34610014654">+34 610 01 46 54</a><br>
+                    <a href="mailto:jcalduchrochina@gmail.com">jcalduchrochina@gmail.com</a><br>
+                    <a href="https://www.instagram.com/javiercalduch_psico/" class="more">@fisioterapeuta</a>
+                </p>
+                  <details>
+                <summary>
+                    <h4>Saber más ></h4>
+                </summary>
+                <a>Soy José Donate, psicólogo especializado en el alto rendimiento. Mi pasión es
+                    acompañar a personas que buscan superar sus límites y alcanzar su máximo potencial, La mente
+                    es tan clave como el cuerpo para lograr el éxito, y
+                    mi enfoque se basa en desarrollar estrategias mentales que optimicen el rendimiento y
+                    mejoren el bienestar general.
+                    Si estás buscando un enfoque integral, aquí encontrarás el apoyo y la
+                    orientación que necesitas.
+                    <br>
+                    ¡Vamos a trabajar juntos para llevar tu rendimiento a nuevas alturas!
+                </a>
+                </details>
+            </div>
+            <div class="location">
+                <h2>Sandra Meseguer</h2>
+                <a>______________________________</a>
+                <p>COMMUNITY MANAGER<br>DISEÑADORA GRÁFICA</p>
+                <a>______________________________</a>
+                <p><a href="tel:+34611404718">+34 611 40 47 18</a><br>
+                    <a href="mailto:sboilsmeseguer@gmail.com">sboilsmeseguer@gmail.com</a><br>
+                    <a href="https://www.instagram.com/sboils_/" class="more">@sboils_</a>
+                </p>
+                <details>
+                    <summary>
+                        <h4>Saber más ></h4>
+                    </summary>
+                    <a> Soy Sandra Meseguer, diseñadora gráfica y community manager. Mi misión es ayudar a
+                        marcas y empresas a destacar
+                        a través de un diseño visual impactante y una gestión efectiva de sus redes sociales.
+                        Mi enfoque es construir y mantener una comunidad activa y
+                        comprometida en las plataformas sociales, Crear estrategias de contenido que no
+                        solo aumenten la visibilidad, sino que también generen una interacción auténtica con los
+                        seguidores.
+                        Puedo ayudarte a llevar tu proyecto al siguiente nivel.
+                        <br>
+                        ¡Hablemos y hagamos que tu marca brille!
+                    </a>
+                </details>
+            </div>
+            <div class="location">
+                <h2>Ruben Bellido</h2>
+                <a>______________________________</a>
+                <p>ABOGADO</p>
+                <a>______________________________</a>
+                <p><a href="tel:+34667055011">+34 667 055 011</a><br>
+                    <a href="mailto:Info@rubenbellidoabogado.com">Info@rubenbellidoabogado.com</a><br>
+                    <a href="https://www.instagram.com/rubenbellidoabogado/" class="more">@rubenbellidoabogado</a>
+                </p>
+                <details>
+                    <summary>
+                        <h4>Saber más ></h4>
+                    </summary>
+                    <a> Soy Rubén Bellido, CEO del bufete de abogados "Rubén Bellido y Asociados".
+                        Apasionado de las leyes y del motociclismo, me incorporo al equipo para ayudar a los pilotos y personal tanto a defender
+                        sus intereses como a tener un asesoramiento jurídico adecuado. El bufete, gestionará todos los temas burocráticos,
+                        brindaremos asesoramiento legal integral, gestionaremos contratos, protegeremos sus derechos de imagen y ostentaremos la
+                        representación en posibles reclamaciones judiciales. 
+                        <br>
+                        ¡Vamos a trabajar juntos!
+                    </a>
+                </details>
+            </div>
+          
+          
+    
+        </div>
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="img/MU89 MG Cheste.MP4" video/mp4">
+    
+            </video>
+            <div class="overlay"></div>
+
+          
+        
+       
+        
+
+
+
+
+
+
+
+
+    </footer>
+    </body>
+    
+    </html>
+    

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url(imgs/CI\ 98\ 2.JPG) no-repeat center center/cover;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+        
+        /* Capa de fondo con opacidad negra */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: hsla(235, 100%, 10%, 0.749);
+            z-index: 0;
+        }
+        
+        .container {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .box {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 300px;
+        }
+        
+        .icon {
+            font-size: 24px;
+            color: #0A0A3D;
+        }
+        
+        a {
+            text-decoration: none;
+            color: #0A0A3D;
+            font-size: 18px;
+        }
+        a:hover{
+            text-decoration:underline;
+            color:#2b2b47;
+
+         
+        }
+   
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            padding: 10px 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #6e6e6e;
+            font-weight: bold;
+            position: relative;
+            transition: color 0.3s ease, transform 0.3s ease;
+            font-size: 15PX;
+        }
+
+        nav a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: #cb1111;
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #670a0a;
+            transform: scale(1.1);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .active {
+            color: #000000;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #fff;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 200px;
+            z-index: 1000;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #373737;
+            padding: 10px 15px;
+            display: block;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #0A0A3D;
+  color: white;
+}
+
+/* Sección de Sponsors (Parte superior, fondo negro) */
+.sponsors {
+  background-color: black;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.sponsors img {
+  height: 40px;
+}
+
+/* Contenedor azul con enlaces y logos */
+.footer-main {
+  background-color: #0A0A3D;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
+  text-align: left;
+}
+
+.footer-links {
+  width: 30%;
+}
+
+.footer-links h4,
+.social-media h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links ul li {
+  margin: 8px 0;
+}
+
+.footer-links ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.footer-links ul li a:hover {
+  color: #F1F1F1;
+}
+
+/* Logos a la derecha */
+.footer-logo {
+  width: 30%;
+  text-align: center;
+}
+
+.footer-logo img {
+  height: 50px;
+  margin: 5px;
+}
+
+/* Redes sociales */
+.social-media {
+  width: 30%;
+  text-align: right;
+}
+
+.social-media .icons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.social-media .icons a {
+  font-size: 20px;
+  color: white;
+  text-decoration: none;
+}
+
+.social-media .icons a:hover {
+  color: #F1F1F1;
+}
+
+/* Pie de página */
+.footer-bottom {
+  background-color:#0A0A3D;
+  text-align: center;
+  padding: 15px;
+  font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .footer-main {
+      flex-direction: column;
+      text-align: center;
+      gap: 20px;
+  }
+
+  .footer-links, .footer-logo, .social-media {
+      width: 100%;
+  }
+
+  .social-media .icons {
+      justify-content: center;
+  }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="home.html" >Inicio</a>
+            
+            <div class="dropdown">
+                <a href="servicios.html" class="dropbtn">Servicios ▼</a>
+                <div class="dropdown-content">
+                  <a href="servicios.html#entrenamientos" >Entrenamientos en circuito</a>
+                  <a href="servicios.html#asistencia" >Asistencia mecánica</a>
+                  
+                  <a href="servicios.html#alojamiento" >Alojamiento</a>
+                  <a href="servicios.html#fisioterapia">Fisioterapia</a>
+                  <a href="servicios.html#NUTRICIÓN" >Nutrición deportiva</a>
+                  <a href="servicios.html#PSICÓLOGO" >Psicología deportivo</a>
+                  <a href="servicios.html#diseñadora">Diseño gráfico</a>
+                  <a href="servicios.html#community">Community manager</a>
+                  <a href="servicios.html#asesoramiento juridico">Asesoramiento jurídico</a>
+                </div>
+            </div>
+            <a href="equipo.html">Equipo</a>
+            <a href="pilotos.html" > Pilotos</a>
+            <a href="contacto.html"class="active"> CONTACTO</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h1>Contacto</h1>
+        <div class="box">
+            <i class="fas fa-phone icon"></i> <br>
+            <a href="tel:+34686731546">686 73 15 46</a>
+        </div>
+        <div class="box">
+            <i class="fas fa-envelope icon"></i> <br>
+            <a href="mailto:360riderscenter@gmail.com">360riderscenter@gmail.com</a>
+        </div>
+        <div class="box">
+            <i class="fab fa-instagram icon"></i> <br>
+            <a href="https://www.instagram.com/360riderscenter/">@360riderscenter</a>
+        </div>
+        
+    </div>
+   
+</body>
+
+
+
+
+
+
+
+
+
+</footer>
+</html>
+

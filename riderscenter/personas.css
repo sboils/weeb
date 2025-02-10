@@ -1,0 +1,258 @@
+/* Estilos generales */
+
+.more {
+    display: inline-block;
+    margin-top: 1em;
+    padding: 0.5em 1.5em;
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(45deg, #000000, #4b6175);
+    border-radius: 20px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.more:hover {
+    background: linear-gradient(45deg, #abaab9, #687175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-3px);
+    color: #000000;
+}
+.team {
+    background-color: #282828;
+}
+.container {
+    padding: 40px;
+}
+
+
+/* Animación fade-in */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease forwards;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f8f9fa;
+    color: #260000;
+    text-align: center;
+}
+
+/* Navbar */
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 10px 0;
+    position: fixed; /* Hace que el header sea fijo */
+    top: 0; /* Se queda en la parte superior */
+    left: 0;
+    width: 100%; /* Ocupará el ancho completo */
+    z-index: 1000; /* Se asegura de estar encima de otros elementos */
+  
+    padding: 10px 0;
+  }
+  .navbar {
+    display: flex;
+    gap: 20px;
+    background: #ffffff;
+    padding: 10px 0;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+  
+  .navbar {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  nav {
+    display: flex;
+    gap: 20px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #6e6e6e;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background-color: #cb1111;
+    transition: width 0.3s ease;
+  }
+  
+  nav a:hover {
+    color: #670a0a;
+    transform: scale(1.1);
+  }
+  
+  nav a:hover::after {
+    width: 100%;
+  }
+  
+  .active {
+    color: #000000;
+  }
+    
+    .dropbtn {
+        cursor: pointer;
+    }
+    
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        min-width: 200px;
+        z-index: 1000;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    
+    .dropdown-content a {
+        color: #373737;
+        padding: 10px 15px;
+        display: block;
+        transition: background 0.3s ease;
+    }
+    
+    .dropdown-content a:hover {
+        background-color: #f1f1f1;
+    }
+    
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+
+/* Contenedor de equipo */
+.container {
+    padding: 40px;
+}
+
+.img {
+    max-width: 60%;
+    height: 90%;
+    border-radius: 40px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Título */
+.title {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+/* Descripción */
+.description {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    color: #dddddd;
+}
+
+/* Grid del equipo */
+.team-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+/* Tarjeta de miembro */
+.team-member {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efecto blanco y negro */
+.image-container img {
+    width: 100%;
+    border-radius: 10px;
+    filter: grayscale(100%);
+    transition: filter 0.5s ease;
+}
+
+/* Al pasar el ratón, vuelve a color */
+.team-member:hover img {
+    filter: grayscale(0%);
+}
+
+/* Efecto de sombra al pasar el ratón */
+.team-member:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para el "Saber más" */
+details {
+    margin-top: 10px;
+    background: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+
+summary {
+    color: rgb(76, 0, 0);
+    padding: 8px 12px;
+
+    cursor: pointer;
+    display: inline-block;
+    transition: background 0.3s ease;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Adaptabilidad para dispositivos */
+@media (max-width: 768px) {
+    .team-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team-member {
+        width: 90%;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .team-grid {
+        gap: 15px;
+    }
+
+    .team-member {
+        width: 45%;
+    }
+}
